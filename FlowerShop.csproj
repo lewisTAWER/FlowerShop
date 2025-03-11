@@ -118,6 +118,7 @@
     <Compile Include="Classes\Common\DBConnection.cs" />
     <Compile Include="Classes\item_categories.cs" />
     <Compile Include="Classes\item_products.cs" />
+    <Compile Include="Classes\ShoppingCart.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -126,7 +127,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Cart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\categories.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\order_form.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -155,8 +164,14 @@
     <Compile Include="Pages\authorization.xaml.cs">
       <DependentUpon>authorization.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Cart.xaml.cs">
+      <DependentUpon>Cart.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\categories.xaml.cs">
       <DependentUpon>categories.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\order_form.xaml.cs">
+      <DependentUpon>order_form.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\products.xaml.cs">
       <DependentUpon>products.xaml</DependentUpon>
