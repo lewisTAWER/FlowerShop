@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlowerShop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Цветочный магазин" Height="700" Width="800" MinHeight="700" MinWidth="800" Icon="/Image/icon.png">
     <Grid>
-        
+        <Frame x:Name="frame" NavigationUIVisibility="Hidden">
+
+        </Frame>
     </Grid>
 </Window>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,9 +21,17 @@ namespace FlowerShop
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow init;
+
         public MainWindow()
         {
             InitializeComponent();
+            init = this;
+            OpenPage(new Pages.authorization());
+        }
+        public void OpenPage(Page page)
+        {
+            frame.Navigate(page);
         }
     }
 }
