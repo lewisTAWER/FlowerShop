@@ -134,6 +134,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\registration_phone.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\authorization.xaml.cs">
@@ -144,6 +148,9 @@
     </Compile>
     <Compile Include="Pages\registration_login.xaml.cs">
       <DependentUpon>registration_login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\registration_phone.xaml.cs">
+      <DependentUpon>registration_phone.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
