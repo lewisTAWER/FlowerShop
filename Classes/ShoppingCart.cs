@@ -1,105 +1,78 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FlowerShop.Classes;
 using System.Windows.Controls;
 using System.Windows;
-using System.Xml.Linq;
+using System.Linq;
 
 namespace FlowerShop.Classes
 {
-    public partial class categories : Page
+    public class ShoppingCart
     {
-        public List<item_categories> items_categories = new List<item_categories>();
+        private static readonly Lazy<ShoppingCart> lazy =
+            new Lazy<ShoppingCart>(() => new ShoppingCart());
 
-        public categories()
+        public static ShoppingCart Instance { get { return lazy.Value; } }
+
+        public List<CartItem> CartItems { get; set; }
+
+        public event EventHandler CartUpdated;
+
+        public ShoppingCart()
         {
-            InitializeComponent();
-            LoadCategoriesFromDatabase();
-            ShoppingCart.Instance.CartUpdated += ShoppingCart_CartUpdated;
-            UpdateCartSummary();
+            CartItems = new List<CartItem>();
         }
 
-        private void ShoppingCart_CartUpdated(object sender, EventArgs e)
+        public void AddItem(item_products item, int quantity)
         {
-            UpdateCartSummary();
-        }
+            CartItem existingItem = CartItems.FirstOrDefault(ci => ci.Item == item);
 
-        private void UpdateCartSummary()
-        {
-            decimal totalAmount = ShoppingCart.Instance.GetTotalCost();
-            string cartButtonText = $"Корзина ({totalAmount} р.)";
-            CartButton.Content = cartButtonText;
-        }
-
-        public void LoadCategoriesFromDatabase()
-        {
-            items_categories.Clear();
-
-            try
+            if (existingItem != null)
             {
-                using (MySqlConnection connection = DBConnection.OpenConnection())
-                {
-                    string query = "SELECT CategoryID, Name, Src FROM Categories";
-                    MySqlCommand cmd = new MySqlCommand(query, connection);
-                    MySqlDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        int categoryID = reader.GetInt32("CategoryID");
-                        string name = reader.GetString("Name");
-                        string src = reader.GetString("Src");
-
-                        items_categories.Add(new item_categories(categoryID, name, src));
-                    }
-
-                    reader.Close();
-                }
+                if (quantity <= 0) CartItems.Remove(existingItem);
+                else existingItem.Quantity = quantity;
             }
-            catch (Exception ex)
+            else if (quantity > 0)
             {
-                MessageBox.Show("Произошла ошибка при загрузке категорий: " + ex.Message);
+                CartItem cartItem = new CartItem(item, quantity);
+                CartItems.Add(cartItem);
             }
 
-            LoadItemCategories();
+            OnCartUpdated();
         }
 
-        public void LoadItemCategories()
+        public void Clear()
         {
-            parent.Children.Clear();
-
-            foreach (var item in items_categories)
-            {
-                parent.Children.Add(new Elements.item_categories(item));
-            }
+            CartItems.Clear();
+            OnCartUpdated();
         }
 
-        private void Logout_Click(object sender, RoutedEventArgs e)
+        public decimal GetTotalCost()
         {
-            UserSession.Clear();
-            MainWindow.init.OpenPage(new authorization());
+            return CartItems.Sum(item => item.GetTotalCost());
         }
 
-        private void go_vk(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        protected virtual void OnCartUpdated()
         {
-            System.Diagnostics.Process.Start("https://vk.com/syrprizko");
+            CartUpdated?.Invoke(this, EventArgs.Empty);
+        }
+    }
+
+    public class CartItem
+    {
+        public item_products Item { get; set; }
+        public int Quantity { get; set; }
+
+        public CartItem(item_products item, int quantity)
+        {
+            Item = item;
+            Quantity = quantity;
         }
 
-        private void go_telegram(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        public decimal GetTotalCost()
         {
-            System.Diagnostics.Process.Start("https://web.telegram.org/");
-        }
-
-        private void go_instagram(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=9vjcZPteWrY");
-        }
-
-        private void CartButton_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow.init.OpenPage(new Cart());
+            return Item.ProductsPrice * Quantity;
         }
     }
 }

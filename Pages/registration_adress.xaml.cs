@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using FlowerShop.Classes.Common;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static FlowerShop.App;
 
 namespace FlowerShop.Pages
 {

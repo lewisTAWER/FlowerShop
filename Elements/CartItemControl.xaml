@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="FlowerShop.Elements.CartItemControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FlowerShop.Elements"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style TargetType="Border">
+            <Setter Property="Background" Value="Wheat"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="Pink"/>
+                    <Setter Property="BorderThickness" Value="4"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Width="200" Height="300" Margin="15">
+        <Border>
+            <Grid>
+                <Image x:Name="products_image" Margin="24,11,24,137" Stretch="UniformToFill" Width="150" Height="150"/>
+                <Label x:Name="products_name" Content="Наименование" Margin="10,137,10,63" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Foreground="Black" />
+                <Label x:Name="products_price" Content="3000 р." Margin="10,171,10,40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Foreground="Black"/>
+                <Button Click="products_minus" x:Name="btn_minus" Content="-" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="30" Height="25" Margin="10,0,0,38"/>
+                <TextBox x:Name="products_count" Text="0" Height="25" Margin="45,0,45,38" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" PreviewTextInput="products_count_PreviewTextInput"/>
+                <Button Click="products_plus"  x:Name="btn_plus" Content="+" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="30" Height="25" Margin="0,0,10,38"/>
+                <Button x:Name="products_AddToCart" IsEnabled="False" VerticalAlignment="Bottom" Content="В КОРЗИНУ" Margin="10,0,10,10" Height="25"/>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
