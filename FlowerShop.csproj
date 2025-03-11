@@ -122,8 +122,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\authorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\authorization.xaml.cs">
+      <DependentUpon>authorization.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -152,8 +159,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Elements\" />
-    <Folder Include="Images\" />
-    <Folder Include="Pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\background_0.png" />
+    <Resource Include="Image\background_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
