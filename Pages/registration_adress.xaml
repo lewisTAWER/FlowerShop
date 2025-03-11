@@ -1,0 +1,56 @@
+﻿<Page x:Class="FlowerShop.Pages.registration_adress"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FlowerShop.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="800"
+      Title="registration_adress">
+    <Grid Background="white">
+        <Image Source="/Image/background_0.png" Margin="0,-25,0,0" HorizontalAlignment="Left" Width="354" />
+        <Image Source="/Image/background_1.png" Margin="0,0,-69,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="384" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-89.86"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical" Margin="0,200,0,0">
+            <Label Content="РЕГИСТРАЦИЯ" FontSize="24" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center"/>
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <Label Content="Введите улицу:" FontSize="16" Foreground="Black" HorizontalAlignment="Left"/>
+                <TextBox x:Name="StreetTextBox" Width="200" Margin="2"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <Label Content="Введите номер дома:" FontSize="16" Foreground="Black" HorizontalAlignment="Left"/>
+                <TextBox x:Name="HouseNumberTextBox" Width="200" Margin="2"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <Label Content="Введите номер комнаты:" FontSize="16" Foreground="Black" HorizontalAlignment="Left"/>
+                <TextBox x:Name="ApartmentNumberTextBox" Width="200" Margin="2"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <Label Content="Введите номер подъезда:" FontSize="16" Foreground="Black" HorizontalAlignment="Left"/>
+                <TextBox x:Name="EntranceNumberTextBox" Width="200" Margin="2"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <Label Content="Введите номер этажа:" FontSize="16" Foreground="Black" HorizontalAlignment="Left"/>
+                <TextBox x:Name="FloorNumberTextBox" Width="200" Margin="2"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Назад" Width="80" Margin="10" Background="#FF69DE32" Foreground="White" Click="registration_adress_back"/>
+                <Button Content="Продолжить" Width="100" Margin="10" Background="#FF69DE32" Foreground="White" Click="registration_adress_next"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

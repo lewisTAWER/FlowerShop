@@ -126,6 +126,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\registration_adress.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\registration_fio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -142,6 +146,9 @@
   <ItemGroup>
     <Compile Include="Pages\authorization.xaml.cs">
       <DependentUpon>authorization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\registration_adress.xaml.cs">
+      <DependentUpon>registration_adress.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\registration_fio.xaml.cs">
       <DependentUpon>registration_fio.xaml</DependentUpon>

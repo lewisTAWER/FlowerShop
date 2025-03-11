@@ -5,8 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FlowerShop.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="authorization">
+      d:DesignHeight="700" d:DesignWidth="800"
+      Title="Цветучено">
+
     <Grid Background="white">
         <Image Source="/Image/background_0.png" Margin="0,-25,0,0" HorizontalAlignment="Left" Width="354" />
         <Image Source="/Image/background_1.png" Margin="0,0,-69,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="384" >
